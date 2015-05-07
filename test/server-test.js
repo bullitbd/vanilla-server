@@ -10,7 +10,6 @@ chai.use(chaiHttp);
 require('../server');
 
 var url = 'localhost:3000'; //Tue May 05 2015 20:34:30 GMT-0700 (PDT)
-var timex = /^([A-Z][a-z]{2}\s){2}\n{2}\s\n{4}(\n{2}:){2}\n2\sGMT-\n{4}\s(\w{3})$/;
 
 describe('the server', function() {
   it('should respond to a get request to /time', function(done) {
