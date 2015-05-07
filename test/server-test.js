@@ -1,3 +1,5 @@
+// server-test.js
+
 'use strict';
 
 var chai = require('chai');
@@ -28,7 +30,6 @@ describe('the server', function() {
       .post('/greet')
       .send({name: 'name'})
       .end(function(err, res) {
-        //console.log(res);
         expect(err).to.eql(null);
         expect(res.body.msg).to.eql('hello, name');
         expect(res.status).to.eql(200);

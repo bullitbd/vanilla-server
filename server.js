@@ -1,3 +1,8 @@
+// server.js
+
+'use strict';
+
+
 var http = require('http');
 
 
@@ -5,8 +10,6 @@ var rex = /^\/greet\/(\w+)$/i;
 
 var server = http.createServer(function(req, res) {
   
-  //console.log('\nreq.url is: ' + req.url);
-  //console.log('req.method is: ' + req.method);
 
   if (req.url === '/time') {
     var date = new Date();
@@ -16,8 +19,6 @@ var server = http.createServer(function(req, res) {
     res.end();
   }
   
-
-
   else if (req.url.indexOf('/greet') !== -1) {
 
     if(req.method === 'POST') {
@@ -31,7 +32,6 @@ var server = http.createServer(function(req, res) {
         if (body.name) {
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify({msg: 'hello, ' + body.name}));
-          //console.log('response: '+ 'hello, ' + body.name);
           res.end();
         }
       });
@@ -42,7 +42,6 @@ var server = http.createServer(function(req, res) {
       var text = match !== null ? 'hello, ' + match[1] : 'sorry, that\'s an invalid name';
       res.writeHead( match !== null ? 200 : 404, {'Content-Type': 'application/json'});
       res.write(JSON.stringify({msg: text}));
-      //console.log('response: '+ text);
       res.end();
 
       } 
@@ -50,12 +49,9 @@ var server = http.createServer(function(req, res) {
   } else {
     res.writeHead(404, {'Content-Type': 'application/json'});
     res.write(JSON.stringify({msg: 'could not find page'}));
-    //console.log('response: ' + 'could not find page');
     res.end();
   }
 });  
-
-
 
   server.listen(3000, function() {
   console.log('server started');
